@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Article  # Importa tu modelo
 
-# Register your models here.
+# Registra el modelo para que sea visible en el /admin
+admin.site.register(Article)

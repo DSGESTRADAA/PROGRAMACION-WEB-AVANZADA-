@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import ( LoginView,LogoutView)
-from mi_app.views import index, inicio, register, acerca_de,list_products
+from mi_app.views import index, inicio, register, acerca_de,list_products,practica_permisos
 from django.contrib.auth import views as auth_views
-
+from mi_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', index, name='index'),
@@ -12,10 +12,13 @@ urlpatterns = [
     path('logout/',LogoutView.as_view(),name='logout'),
     path('register/', register, name='register'),
     path('acerca/', acerca_de, name='acerca_de'),
-    path('productos/', list_products, name='list_products'),
+    path('practica_permisos/', views.article_list, name='article_list'),    path('productos/', list_products, name='list_products'),
     path('password-reset/',auth_views.PasswordResetView.as_view(template_name='registration/password_reset.html'),name='password_reset'),
     path('password-reset/done/',auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'),name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'),name='password_reset_confirm'),
     path('password-reset-complete/',auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'),name='password_reset_complete'),
-
+    path('articles/new/', views.article_create, name='article_create'),
+    path('articles/<int:pk>/delete/', views.article_delete, name='article_delete'),
+    path('articles/<int:pk>/publish/', views.article_publish, name='article_publish'),
+    path('articles/<int:pk>/edit/', views.article_edit, name='article_edit'),
 ]
