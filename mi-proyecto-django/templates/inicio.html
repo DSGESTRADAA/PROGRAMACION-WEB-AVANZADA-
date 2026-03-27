@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Inicio</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    <p>Nombre: {{ name }}</p>
+    <p>Edad: {{ age }}</p>
+
+    <h2>Lista de ejemplos:</h2>
+    <ul>
+        {% for item in example_list %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

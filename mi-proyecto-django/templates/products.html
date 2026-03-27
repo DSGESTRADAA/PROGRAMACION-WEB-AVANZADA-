@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Productos</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">PRecio</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for product in products %}
+    <tr>
+      <th scope="row">{{product.id}}</th>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+
+</table>
+{% endblock %}

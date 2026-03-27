@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+</head>
+<body>
+
+<form method="post" class="form-container">
+    {% csrf_token %}
+
+    <h2 class="form-title">Crear cuenta</h2>
+
+    <div class="form-group">
+        <label for="{{ form.username.id_for_label }}">Usuario:</label>
+        {{ form.username }}
+        <small class="help-text">{{ form.username.help_text }}</small>
+        {% for error in form.username.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}
+        {% for error in form.email.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
+        {{ form.password1 }}
+        <small class="help-text">{{ form.password1.help_text }}</small>
+        {% for error in form.password1.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.password2.id_for_label }}">Confirmar contraseña:</label>
+        {{ form.password2 }}
+        {% for error in form.password2.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn-submit">Registrarse</button>
+
+    <p class="form-footer">¿Ya tienes cuenta? <a href="{% url 'login' %}">Iniciar sesión</a></p>
+</form>
+
+<style>
+/* Contenedor del formulario */
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Título del formulario */
+.form-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+/* Grupos de campos */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #007bff; /* mismo azul del login */
+    outline: none;
+}
+
+/* Texto de ayuda */
+.help-text {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* Errores */
+.error {
+    display: block;
+    font-size: 0.85rem;
+    color: #e74c3c;
+    margin-top: 3px;
+}
+
+/* Botón de envío */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff; /* mismo color que login */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Footer del formulario */
+.form-footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.form-footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+</style>
+
+
+</body>
+</html>
